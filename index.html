@@ -3,102 +3,471 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>작명별 (Jakmyeongbyeol) — 개발자 페이지</title>
-<meta name="description" content="사주와 전통 성명학으로 아기 이름을 추천하는 앱, 작명별의 개발자 페이지입니다.">
-<style>
-  :root {
-    --bg: #f6f7f9;
-    --card: #ffffff;
-    --text: #14181f;
-    --muted: #5b6472;
-    --line: #e3e6eb;
-    --accent: #1f6feb;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #0f1216;
-      --card: #171b21;
-      --text: #e9edf3;
-      --muted: #9aa4b2;
-      --line: #262c35;
-      --accent: #6ea8fe;
+<title>사주연구소 — 일상에 도움이 되는 모바일 앱과 도구</title>
+<meta name="description" content="사주연구소는 사주와 전통 성명학처럼 오래된 지혜를 오늘 쓰기 편한 모바일 앱으로 만듭니다. 첫 번째 앱 '작명별 - 사주 성명학 아기 이름'을 Google Play에서 만나보세요.">
+<link rel="canonical" href="https://busstop22106.github.io/">
+<meta name="theme-color" content="#FCF8F3">
+<meta name="author" content="사주연구소">
+
+<!-- 공유 미리보기 (카카오톡·블로그) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="사주연구소">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:url" content="https://busstop22106.github.io/">
+<meta property="og:title" content="사주연구소 — 일상에 도움이 되는 모바일 앱">
+<meta property="og:description" content="사주와 전통 성명학을 오늘 쓰기 편한 앱으로. 첫 번째 앱 '작명별 - 사주 성명학 아기 이름'을 만나보세요.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="사주연구소 — 일상에 도움이 되는 모바일 앱">
+<meta name="twitter:description" content="사주와 전통 성명학을 오늘 쓰기 편한 앱으로.">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23A9503C'/%3E%3Cpath d='M32 14c1.6 9.2 5.2 12.8 14.4 14.4C37.2 30 33.6 33.6 32 42.8 30.4 33.6 26.8 30 17.6 28.4 26.8 26.8 30.4 23.2 32 14z' fill='%23FFF7EF'/%3E%3Ccircle cx='46' cy='44' r='3.4' fill='%23F0C98A'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "사주연구소",
+  "url": "https://busstop22106.github.io/",
+  "email": "busstop22106@gmail.com",
+  "description": "사주와 전통 성명학을 바탕으로 일상에 도움이 되는 모바일 앱과 도구를 만드는 개발 스튜디오.",
+  "makesOffer": {
+    "@type": "Offer",
+    "itemOffered": {
+      "@type": "MobileApplication",
+      "name": "작명별 - 사주 성명학 아기 이름",
+      "operatingSystem": "Android",
+      "url": "https://busstop22106.github.io/naming-star/",
+      "installUrl": "https://play.google.com/store/apps/details?id=com.jakmyeongbyeol.app"
     }
   }
+}
+</script>
+
+<style>
+  :root {
+    --bg: #FCF8F3;
+    --surface: #FFFFFF;
+    --soft: #F6ECE2;
+    --ink: #201B17;
+    --body: #4B423A;
+    --muted: #7C7168;
+    --line: #ECE1D5;
+    --clay: #A9503C;
+    --clay-dark: #8C3F2E;
+    --clay-soft: #F4E2DA;
+    --gold: #C1994F;
+    --radius: 20px;
+    --shadow-sm: 0 1px 2px rgba(52, 36, 24, 0.05), 0 8px 24px -12px rgba(52, 36, 24, 0.14);
+    --shadow-md: 0 2px 4px rgba(52, 36, 24, 0.05), 0 24px 48px -24px rgba(52, 36, 24, 0.28);
+    --max: 1120px;
+  }
+
   * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
   body {
     margin: 0;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
     background: var(--bg);
-    color: var(--text);
-    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
-                 "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
-    line-height: 1.6;
+    color: var(--body);
+    font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
+                 "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", system-ui, sans-serif;
+    font-size: 17px;
+    line-height: 1.7;
+    letter-spacing: -0.011em;
     -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    word-break: keep-all;
   }
-  main {
-    width: 100%;
-    max-width: 560px;
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 16px;
-    padding: 32px 28px;
+
+  h1, h2, h3 { color: var(--ink); margin: 0; letter-spacing: -0.035em; line-height: 1.25; font-weight: 700; }
+  p { margin: 0; }
+  a { color: inherit; }
+  img, svg { display: block; max-width: 100%; }
+
+  .wrap { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+
+  .skip {
+    position: absolute; left: -9999px; top: 0; z-index: 100;
+    background: var(--ink); color: #fff; padding: 12px 18px; border-radius: 0 0 12px 0;
   }
-  h1 {
-    margin: 0 0 4px;
-    font-size: 26px;
-    letter-spacing: -0.02em;
+  .skip:focus { left: 0; }
+  :focus-visible { outline: 2px solid var(--clay); outline-offset: 3px; border-radius: 6px; }
+
+  /* ---------- 헤더 ---------- */
+  .site-header {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(252, 248, 243, 0.86);
+    backdrop-filter: saturate(180%) blur(12px);
+    -webkit-backdrop-filter: saturate(180%) blur(12px);
+    border-bottom: 1px solid rgba(236, 225, 213, 0.8);
   }
-  .sub {
-    margin: 0 0 20px;
-    color: var(--muted);
-    font-size: 14px;
+  .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 68px; }
+  .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
+  .brand-mark {
+    width: 34px; height: 34px; border-radius: 10px; background: var(--clay);
+    display: grid; place-items: center; flex: none;
+    box-shadow: 0 6px 14px -8px rgba(169, 80, 60, 0.9);
   }
-  p { margin: 0 0 16px; font-size: 15px; }
-  ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    border-top: 1px solid var(--line);
+  .brand-mark svg { width: 20px; height: 20px; }
+  .brand-name { font-weight: 700; font-size: 18px; color: var(--ink); letter-spacing: -0.03em; }
+  .header-nav { display: flex; align-items: center; gap: 22px; font-size: 15px; color: var(--muted); }
+  .header-nav a { text-decoration: none; }
+  .header-nav a:hover { color: var(--ink); }
+
+  /* ---------- 버튼 ---------- */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+    font-family: inherit; font-size: 16px; font-weight: 600; letter-spacing: -0.015em;
+    text-decoration: none; border-radius: 999px; border: 1px solid transparent;
+    padding: 15px 26px; cursor: pointer; white-space: nowrap;
+    transition: transform .18s ease, box-shadow .18s ease, background-color .18s ease;
   }
-  li { border-bottom: 1px solid var(--line); }
-  a {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 12px;
-    padding: 14px 2px;
-    color: var(--text);
-    text-decoration: none;
-    font-size: 15px;
+  .btn-primary { background: var(--clay); color: #fff; box-shadow: 0 10px 24px -14px rgba(169, 80, 60, 0.95); }
+  .btn-primary:hover { background: var(--clay-dark); transform: translateY(-1px); box-shadow: 0 16px 30px -16px rgba(169, 80, 60, 0.9); }
+  .btn-primary:active { transform: translateY(0); }
+  .btn-ghost { background: transparent; border-color: var(--line); color: var(--ink); }
+  .btn-ghost:hover { background: #fff; border-color: #DCCDBD; }
+  .btn-sm { padding: 11px 19px; font-size: 14.5px; }
+  .btn .play-glyph { width: 17px; height: 17px; flex: none; }
+
+  /* ---------- 히어로 ---------- */
+  .hero { position: relative; overflow: hidden; padding: 88px 0 78px; }
+  .hero::before {
+    content: ""; position: absolute; inset: -25% -10% auto -10%; height: 660px; pointer-events: none;
+    background:
+      radial-gradient(48% 58% at 14% 18%, rgba(240, 201, 138, 0.34) 0%, rgba(240, 201, 138, 0) 70%),
+      radial-gradient(44% 54% at 82% 6%, rgba(169, 80, 60, 0.12) 0%, rgba(169, 80, 60, 0) 72%);
   }
-  a:hover .go, a:focus-visible .go { color: var(--accent); }
-  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 6px; }
-  .go { color: var(--muted); font-size: 13px; white-space: nowrap; }
-  footer {
-    margin-top: 24px;
-    color: var(--muted);
-    font-size: 12px;
+  .hero-grid { position: relative; display: grid; grid-template-columns: 1.08fr 0.92fr; gap: 56px; align-items: center; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--clay); background: #fff; border: 1px solid var(--clay-soft);
+    padding: 7px 14px; border-radius: 999px; margin-bottom: 24px;
+  }
+  .eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+  .hero h1 { font-size: clamp(2rem, 4.4vw, 3.15rem); font-weight: 800; max-width: 16em; }
+  .hero .lead { margin-top: 22px; font-size: clamp(1.02rem, 1.6vw, 1.15rem); color: var(--body); max-width: 34em; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+  .hero-fine { margin-top: 16px; font-size: 13.5px; color: var(--muted); }
+  .hero-fine a { color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
+  .hero-fine a:hover { color: var(--clay); }
+
+  /* 스택 그래픽 */
+  .stack { position: relative; height: 330px; display: grid; place-items: center; }
+  .stack-tile {
+    position: absolute; width: 208px; height: 254px; border-radius: 26px;
+    border: 1px solid var(--line); background: #fff;
+  }
+  .stack-tile.back-1 { transform: translate(46px, -26px) rotate(7deg); background: #F7EDE2; border-color: #EFE1D2; }
+  .stack-tile.back-2 { transform: translate(-46px, 14px) rotate(-6deg); background: #FBF3EA; border-color: #F0E4D6; }
+  .stack-tile.front {
+    transform: translateY(-4px); box-shadow: var(--shadow-md);
+    display: flex; flex-direction: column; align-items: flex-start; gap: 4px; padding: 26px 24px;
+  }
+  .stack-icon {
+    width: 52px; height: 52px; border-radius: 15px; background: var(--clay);
+    display: grid; place-items: center; margin-bottom: 16px;
+    box-shadow: 0 10px 20px -14px rgba(169, 80, 60, 0.9);
+  }
+  .stack-icon svg { width: 28px; height: 28px; }
+  .stack-tile.front strong { font-size: 17px; color: var(--ink); letter-spacing: -0.03em; }
+  .stack-tile.front span { font-size: 12.5px; color: var(--muted); }
+  .stack-line { width: 100%; height: 7px; border-radius: 999px; background: #F3E8DC; margin-top: 14px; }
+  .stack-line.short { width: 62%; margin-top: 9px; }
+  .stack-label {
+    position: absolute; bottom: 2px; left: 50%; transform: translateX(-50%);
+    font-size: 12px; color: var(--muted); background: rgba(252, 248, 243, 0.9);
+    padding: 3px 10px; border-radius: 999px;
+  }
+
+  /* ---------- 섹션 ---------- */
+  .section { padding: 78px 0 92px; }
+  .section-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 14px; margin-bottom: 34px; }
+  .kicker { font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--clay); margin-bottom: 10px; }
+  .section h2 { font-size: clamp(1.55rem, 3.1vw, 2.1rem); font-weight: 800; }
+  .section-head .sub { font-size: 15px; color: var(--muted); max-width: 30em; }
+
+  /* ---------- 앱 그리드 ---------- */
+  .app-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 22px;
+    align-items: stretch;
+  }
+  .app-card {
+    display: flex; flex-direction: column;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 24px;
+    padding: 28px 26px 26px; box-shadow: var(--shadow-sm);
+    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  }
+  .app-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: #E2D3C3; }
+  .app-card.featured { background: linear-gradient(180deg, #FFFFFF 0%, #FFF9F2 100%); border-color: #EBDACA; }
+  .app-card-top { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 18px; }
+  .app-icon {
+    width: 54px; height: 54px; border-radius: 15px; flex: none;
+    display: grid; place-items: center; background: var(--clay);
+    box-shadow: 0 10px 22px -16px rgba(169, 80, 60, 0.95);
+  }
+  .app-icon svg { width: 29px; height: 29px; }
+  .app-card h3 { font-size: 1.2rem; font-weight: 700; }
+  .app-sub { font-size: 13.5px; color: var(--muted); margin-top: 2px; }
+  .app-desc { font-size: 15px; color: var(--body); line-height: 1.72; }
+  .app-tags { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; margin: 16px 0 0; padding: 0; }
+  .app-tags li {
+    font-size: 12px; font-weight: 600; color: var(--muted);
+    background: #FBF5EE; border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px;
+  }
+  .app-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: auto; padding-top: 24px; }
+  .app-actions .btn { flex: 1 1 auto; }
+
+  .pill {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 11.5px; font-weight: 700; letter-spacing: 0.01em;
+    border-radius: 999px; padding: 4px 10px; white-space: nowrap;
+  }
+  .pill-live { background: #EDF6EE; color: #2E6B3B; border: 1px solid #D6E9D9; }
+  .pill-live i { width: 6px; height: 6px; border-radius: 50%; background: #3E8E4E; }
+  .app-card .pill { margin-left: auto; }
+
+  /* 준비 중 카드 */
+  .app-card.soon {
+    background: transparent; border: 1.5px dashed #DFD0BF; box-shadow: none;
+    justify-content: center; align-items: flex-start; text-align: left;
+  }
+  .app-card.soon:hover { transform: none; box-shadow: none; border-color: #D3C2AE; }
+  .soon-mark {
+    width: 54px; height: 54px; border-radius: 15px; flex: none;
+    display: grid; place-items: center; margin-bottom: 18px;
+    background: #F5EADF; color: #B49B83; font-size: 24px; font-weight: 300;
+  }
+  .app-card.soon h3 { font-size: 1.12rem; color: #4E453D; }
+  .app-card.soon p { font-size: 14.5px; color: var(--muted); margin-top: 8px; max-width: 26em; }
+  .soon-foot { margin-top: 20px; font-size: 12.5px; color: #A2937F; letter-spacing: 0.02em; }
+
+  /* ---------- 문의 ---------- */
+  .contact { padding: 0 0 96px; }
+  .contact-inner {
+    position: relative; overflow: hidden;
+    background: linear-gradient(150deg, #2B231D 0%, #241D18 60%, #30251D 100%);
+    border-radius: 28px; padding: 54px 52px; color: #EDE3D8;
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 28px;
+    box-shadow: 0 40px 70px -50px rgba(36, 29, 24, 0.8);
+  }
+  .contact-inner::after {
+    content: ""; position: absolute; right: -6%; top: -40%; width: 360px; height: 360px;
+    background: radial-gradient(circle, rgba(240, 201, 138, 0.2), rgba(240, 201, 138, 0) 68%);
+    pointer-events: none;
+  }
+  .contact-inner h2 { color: #FFF6EC; font-size: clamp(1.45rem, 2.8vw, 1.9rem); max-width: 18em; }
+  .contact-inner p { color: #C6B8A9; font-size: 15px; margin-top: 10px; max-width: 34em; }
+  .contact-inner .btn-primary { background: #FFF6EC; color: #2B231D; box-shadow: 0 12px 26px -18px rgba(0,0,0,0.9); position: relative; }
+  .contact-inner .btn-primary:hover { background: #fff; }
+
+  /* ---------- 푸터 ---------- */
+  .site-footer { border-top: 1px solid var(--line); background: #FBF5EE; padding: 44px 0 40px; font-size: 14px; }
+  .footer-top { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 28px; }
+  .footer-brand { display: flex; align-items: center; gap: 10px; }
+  .footer-brand .brand-mark { width: 30px; height: 30px; border-radius: 9px; }
+  .footer-brand .brand-mark svg { width: 17px; height: 17px; }
+  .footer-brand strong { font-size: 15.5px; color: var(--ink); letter-spacing: -0.02em; }
+  .footer-brand p { font-size: 12.5px; color: var(--muted); margin-top: 1px; }
+  .footer-links { display: flex; flex-wrap: wrap; gap: 8px 22px; }
+  .footer-links a { color: var(--body); text-decoration: none; font-size: 13.5px; }
+  .footer-links a:hover { color: var(--clay); text-decoration: underline; text-underline-offset: 3px; }
+  .footer-legal { margin-top: 28px; padding-top: 20px; border-top: 1px solid #EFE4D7; color: var(--muted); font-size: 12.5px; line-height: 1.8; }
+
+  /* ---------- 반응형 ---------- */
+  @media (max-width: 980px) {
+    .hero { padding: 60px 0 66px; }
+    .hero-grid { grid-template-columns: 1fr; gap: 36px; }
+    .stack { height: 280px; }
+    .section { padding: 64px 0 76px; }
+    .contact-inner { padding: 42px 34px; }
+  }
+  @media (max-width: 780px) {
+    body { font-size: 16px; }
+    .header-nav .nav-text { display: none; }
+    .app-grid { grid-template-columns: 1fr; }
+    .section-head { flex-direction: column; align-items: flex-start; gap: 10px; }
+    .cta-row .btn { width: 100%; }
+    .hero h1 br { display: none; }
+    .stack { height: 258px; }
+    .stack-tile { width: 176px; height: 216px; border-radius: 22px; }
+    .contact-inner { padding: 34px 24px; border-radius: 22px; }
+    .contact-inner .btn { width: 100%; }
+    .footer-top { flex-direction: column; gap: 22px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
   }
 </style>
 </head>
 <body>
-<main>
-  <h1>작명별</h1>
-  <p class="sub">Jakmyeongbyeol · 아기 이름 추천 앱</p>
+<a class="skip" href="#main">본문으로 바로 가기</a>
 
-  <p>사주와 전통 성명학을 바탕으로 아기 이름 후보를 추천하고 점수로 평가하는 안드로이드 앱입니다.</p>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="./" aria-label="사주연구소 홈">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 3c.7 4 2.3 5.6 6.3 6.3C14.3 10 12.7 11.6 12 15.6 11.3 11.6 9.7 10 5.7 9.3 9.7 8.6 11.3 7 12 3z" fill="#FFF7EF"/>
+          <circle cx="17.6" cy="16.6" r="1.6" fill="#F0C98A"/>
+        </svg>
+      </span>
+      <span class="brand-name">사주연구소</span>
+    </a>
+    <nav class="header-nav" aria-label="주요 메뉴">
+      <a class="nav-text" href="#apps">앱</a>
+      <a class="nav-text" href="#contact">문의</a>
+      <a class="btn btn-primary btn-sm" href="https://play.google.com/store/apps/details?id=com.jakmyeongbyeol.app">작명별 다운로드</a>
+    </nav>
+  </div>
+</header>
 
-  <ul>
-    <li><a href="https://play.google.com/store/apps/details?id=com.jakmyeongbyeol.app">Google Play에서 앱 보기<span class="go">Play 스토어 →</span></a></li>
-    <li><a href="https://busstop22106.github.io/naming-star/privacy.html">개인정보처리방침<span class="go">보기 →</span></a></li>
-    <li><a href="/app-ads.txt">app-ads.txt<span class="go">보기 →</span></a></li>
-  </ul>
+<main id="main">
 
-  <footer>© 2026 busstop22106</footer>
+  <!-- 히어로 -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow"><span class="dot" aria-hidden="true"></span>Studio · 사주연구소</p>
+        <h1>오래된 지혜를,<br>오늘 쓰기 편한 앱으로</h1>
+        <p class="lead">사주연구소는 사주와 전통 성명학처럼 오래 전해진 지혜를, 일상에서 부담 없이 쓸 수 있는 모바일 앱과 도구로 만듭니다.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.jakmyeongbyeol.app">
+            <svg class="play-glyph" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M4.2 2.6c-.3.3-.5.8-.5 1.4v16c0 .6.2 1.1.5 1.4l.1.1 9-9v-.2l-9-9-.1.3zM16.5 15.6l-3-3v-.2l3-3 3.4 1.9c1 .6 1 1.5 0 2.1l-3.4 2.2zM15.6 16.2 12.4 13l-8.8 8.8c.5.3 1.2.3 1.9-.1l10.1-5.5M15.6 9.8 5.5 4.3c-.7-.4-1.4-.4-1.9-.1L12.4 13l3.2-3.2z"/></svg>
+            작명별 무료 다운로드
+          </a>
+          <a class="btn btn-ghost" href="#apps">앱 둘러보기</a>
+        </div>
+        <p class="hero-fine">첫 번째 앱 <a href="./naming-star/">작명별 — 사주 성명학 아기 이름</a> · Android</p>
+      </div>
+
+      <div class="stack" aria-hidden="true">
+        <div class="stack-tile back-1"></div>
+        <div class="stack-tile back-2"></div>
+        <div class="stack-tile front">
+          <span class="stack-icon">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M12 3.5c.7 4 2.3 5.6 6.3 6.3C14.3 10.5 12.7 12.1 12 16.1 11.3 12.1 9.7 10.5 5.7 9.8 9.7 9.1 11.3 7.5 12 3.5z" fill="#FFF7EF"/>
+              <circle cx="17.4" cy="17" r="1.5" fill="#F0C98A"/>
+            </svg>
+          </span>
+          <strong>작명별</strong>
+          <span>사주 성명학 아기 이름</span>
+          <span class="stack-line"></span>
+          <span class="stack-line short"></span>
+        </div>
+        <span class="stack-label">Google Play에서 만나보세요</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 앱 목록 -->
+  <section class="section" id="apps">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="kicker">Apps</p>
+          <h2>사주연구소의 앱</h2>
+        </div>
+        <p class="sub">직접 쓰고 싶은 것부터 하나씩 만들고 있습니다. 새 앱이 나오면 이곳에 더해집니다.</p>
+      </div>
+
+      <div class="app-grid">
+
+        <!-- ▼ 새 앱을 추가할 때는 이 카드 블록을 복사해 아래에 붙여 넣고 내용만 바꾸면 됩니다. -->
+        <article class="app-card featured">
+          <div class="app-card-top">
+            <span class="app-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M12 3.5c.7 4 2.3 5.6 6.3 6.3C14.3 10.5 12.7 12.1 12 16.1 11.3 12.1 9.7 10.5 5.7 9.8 9.7 9.1 11.3 7.5 12 3.5z" fill="#FFF7EF"/>
+                <circle cx="17.4" cy="17" r="1.5" fill="#F0C98A"/>
+              </svg>
+            </span>
+            <div>
+              <h3>작명별</h3>
+              <p class="app-sub">사주 성명학 아기 이름</p>
+            </div>
+            <span class="pill pill-live"><i aria-hidden="true"></i>출시</span>
+          </div>
+          <p class="app-desc">아기에게 주는 첫 번째 선물, 사주와 성명학으로 우리 아기에게 가장 잘 맞는 이름을 추천해요. 부족한 오행을 채우는 이름 60개와 수리·사주 보완·발음·음양·사용성 5차원 분석을 한 번에 확인할 수 있어요.</p>
+          <ul class="app-tags">
+            <li>이름 60개 추천</li>
+            <li>5차원 분석</li>
+            <li>가족 궁합</li>
+            <li>회원가입 없음</li>
+          </ul>
+          <div class="app-actions">
+            <a class="btn btn-primary btn-sm" href="https://play.google.com/store/apps/details?id=com.jakmyeongbyeol.app">
+              <svg class="play-glyph" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M4.2 2.6c-.3.3-.5.8-.5 1.4v16c0 .6.2 1.1.5 1.4l.1.1 9-9v-.2l-9-9-.1.3zM16.5 15.6l-3-3v-.2l3-3 3.4 1.9c1 .6 1 1.5 0 2.1l-3.4 2.2zM15.6 16.2 12.4 13l-8.8 8.8c.5.3 1.2.3 1.9-.1l10.1-5.5M15.6 9.8 5.5 4.3c-.7-.4-1.4-.4-1.9-.1L12.4 13l3.2-3.2z"/></svg>
+              Google Play
+            </a>
+            <a class="btn btn-ghost btn-sm" href="./naming-star/">자세히 보기 →</a>
+          </div>
+        </article>
+        <!-- ▲ 새 앱 카드 끝 -->
+
+        <article class="app-card soon">
+          <span class="soon-mark" aria-hidden="true">+</span>
+          <h3>더 많은 앱을 준비하고 있어요</h3>
+          <p>일상에 도움이 되는 도구를 만들고 있습니다. 새 앱이 준비되면 이곳에서 소개할게요.</p>
+          <p class="soon-foot">COMING SOON</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 문의 -->
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="contact-inner">
+        <div>
+          <h2>앱에 대한 의견을 들려주세요</h2>
+          <p>불편한 점, 있으면 좋겠는 기능, 어떤 앱을 만들면 좋을지 — 무엇이든 보내주시면 만들 때 참고하겠습니다.</p>
+        </div>
+        <a class="btn btn-primary" href="mailto:busstop22106@gmail.com">busstop22106@gmail.com</a>
+      </div>
+    </div>
+  </section>
+
 </main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 3c.7 4 2.3 5.6 6.3 6.3C14.3 10 12.7 11.6 12 15.6 11.3 11.6 9.7 10 5.7 9.3 9.7 8.6 11.3 7 12 3z" fill="#FFF7EF"/>
+            <circle cx="17.6" cy="16.6" r="1.6" fill="#F0C98A"/>
+          </svg>
+        </span>
+        <div>
+          <strong>사주연구소</strong>
+          <p>일상에 도움이 되는 모바일 앱과 도구</p>
+        </div>
+      </div>
+      <nav class="footer-links" aria-label="바로가기">
+        <a href="./naming-star/">작명별</a>
+        <a href="https://play.google.com/store/apps/details?id=com.jakmyeongbyeol.app">Google Play</a>
+        <a href="./naming-star/privacy.html">개인정보처리방침</a>
+        <a href="mailto:busstop22106@gmail.com">문의하기</a>
+      </nav>
+    </div>
+    <div class="footer-legal">
+      <p>문의 <a href="mailto:busstop22106@gmail.com">busstop22106@gmail.com</a></p>
+      <p>© 2026 사주연구소. 앱 이름·설명은 Google Play 등록 정보를 기준으로 합니다.</p>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>
